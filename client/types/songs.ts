@@ -12,5 +12,5 @@ export interface ISong {
   listens: number;
   picture: string;
   audio: string;
-  comments: IComment | [];
+  comments: IComment[] | [];
 }

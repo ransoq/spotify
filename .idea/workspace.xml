@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bec8fecb-3682-48a0-a508-f5ebce146e5c" name="Default Changelist" comment="add server">
-      <change beforePath="$PROJECT_DIR$/server/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/server/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/file/file.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/file/file.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/file/file.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/file/file.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/dto/create-comment.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/dto/create-comment.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/dto/create-track.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/dto/create-track.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/schemas/comment.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/schemas/comment.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/schemas/track.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/schemas/track.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/SongItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/SongItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/layouts/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/layouts/MainLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/songs/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/songs/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/songs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/songs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +33,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/client/pages/songs/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/components/SongItem.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/components/SongList.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/layouts/MainLayout.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/pages/songs/create.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/components/Navbar.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/styles/SongItem.module.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/types/songs.ts" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1ua19uGaZ1AVuSxQdjc5KqROmow" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -59,7 +64,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/server/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -69,6 +74,7 @@
       <recent name="$PROJECT_DIR$/server/src/track" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/layouts" />
       <recent name="$PROJECT_DIR$/client" />
     </key>
   </component>
@@ -94,7 +100,9 @@
       <workItem from="1624950954040" duration="15831000" />
       <workItem from="1625037768784" duration="13799000" />
       <workItem from="1625234225253" duration="221000" />
-      <workItem from="1625234462949" duration="4482000" />
+      <workItem from="1625234462949" duration="5235000" />
+      <workItem from="1625573905685" duration="3736000" />
+      <workItem from="1625652852372" duration="10329000" />
     </task>
     <task id="LOCAL-00001" summary="add server">
       <created>1625061291767</created>
