@@ -1,40 +1,88 @@
-import { FC } from 'react';
+import { FC, ChangeEvent, useEffect } from 'react';
 import { Grid, Card, IconButton } from '@material-ui/core';
 import { VolumeUp, PlayArrow, Pause, Delete } from '@material-ui/icons';
 
 import SongProgress from './SongProgress';
 import { ISong } from '../types/songs';
 import styles from '../styles/Player.module.scss';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
+
+let audio;
 
 const Player: FC = () => {
-  const song: ISong =
-    {
-      _id: '1',
-      name: 'Song 1',
-      artist: 'Singer 1',
-      text: 'Some text',
-      listens: 5,
-      audio: 'http://localhost:5000/audio/8023fca1-ce6e-49bd-a3db-4544dc3dab79.mp3',
-      picture: 'http://localhost:5000/image/a398fec9-d62f-442f-b8a7-276b17bb1840.jpg',
-      comments: [],
-    };
-  const active = false;
+  const { pause, active, currentTime, duration, volume } = useTypedSelector((state) => state.player);
+  const {
+    playSong,
+    pauseSong,
+    setVolume,
+    setDuration,
+    setCurrentTime,
+    setActive,
+  } = useActions();
+
+  useEffect(() => {
+    if (!audio) {
+      audio = new Audio();
+    } else {
+      setAudio();
+      toggleMusic();
+    }
+  }, [active]);
+
+  const setAudio = () => {
+    if (active) {
+      audio = new Audio();
+      audio.src = 'http://localhost:5000/' + active.audio;
+      audio.volume = volume / 100;
+      audio.onloadedmetadata = () => {
+        setDuration((Math.ceil(audio.duration)));
+      };
+      audio.ontimeupdate = () => {
+        setCurrentTime(Math.ceil(audio.currentTime));
+      };
+    }
+  };
+
+  const toggleMusic = () => {
+    if (pause) {
+      playSong();
+      audio.play();
+    } else {
+      pauseSong();
+      audio.pause();
+    }
+  };
+
+  const changeVolume = (event: ChangeEvent<HTMLInputElement>) => {
+    audio.volume = Number(event.target.value) / 100;
+    setVolume(Number(event.target.value));
+  };
+
+  const changeCurrentTime = (event: ChangeEvent<HTMLInputElement>) => {
+    audio.currentTime = Number(event.target.value);
+    setCurrentTime(Number(event.target.value));
+  };
+
+  if (!active) {
+    return null;
+  }
 
   return (
     <div className={styles.player}>
-      <IconButton onClick={e => e.stopPropagation()}>
-        {active
+      <IconButton onClick={toggleMusic}>
+        {!pause
           ? <Pause />
           : <PlayArrow />
         }
       </IconButton>
       <Grid container direction='column' style={{ width: 100, margin: '0 20px' }}>
-        <div>{song.name}</div>
-        <div style={{ fontSize: 12, color: 'gray' }}>{song.artist}</div>
+        <div>{active?.name}</div>
+        <div style={{ fontSize: 12, color: 'gray' }}>{active?.artist}</div>
       </Grid>
-      <SongProgress left={0} right={100} onChange={() => ({})} />
+      <SongProgress left={currentTime} right={duration} onChange={changeCurrentTime} />
       <VolumeUp style={{ marginLeft: 'auto' }} />
-      <SongProgress left={0} right={100} onChange={() => ({})} />
+      <SongProgress left={volume} right={100} onChange={changeVolume} />
     </div>
   );
 };

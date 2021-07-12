@@ -1,24 +1,31 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
 import { Button, Grid, TextField } from '@material-ui/core';
 
 import MainLayout from '../../layouts/MainLayout';
 import { ISong } from '../../types/songs';
+import { useInput } from '../../hooks/useInput';
 
-const SongPage = () => {
-    const song: ISong =
-      {
-        _id: '1',
-        name: 'Song 1',
-        artist: 'Singer 1',
-        text: 'Some text',
-        listens: 5,
-        audio: 'http://localhost:5000/audio/8023fca1-ce6e-49bd-a3db-4544dc3dab79.mp3',
-        picture: 'http://localhost:5000/image/a398fec9-d62f-442f-b8a7-276b17bb1840.jpg',
-        comments: [],
-      };
-
+const SongPage = ({ serverTrack }) => {
+    const [song, setSong] = useState(serverTrack);
     const router = useRouter();
+    const username = useInput('');
+    const comment = useInput('');
+
+    const addComment = async () => {
+      try {
+        const response = await axios.post('http://localhost:5000/tracks/comment', {
+          username: username.value,
+          text: comment.value,
+          trackId: song._id,
+        });
+        setSong({ ...song, comments: [...song.comments, response.data] });
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     return (
       <MainLayout>
@@ -26,7 +33,7 @@ const SongPage = () => {
           All songs
         </Button>
         <Grid container style={{ margin: '20px 0' }}>
-          <img src={song.picture} width={200} height={200} />
+          <img src={`http://localhost:5000/${song.picture}`} width={200} height={200} />
           <div style={{ marginLeft: 30 }}>
             < h1> {song.name}</h1>
             <h1>{song.artist}</h1>
@@ -40,20 +47,29 @@ const SongPage = () => {
           <TextField
             label='Your name'
             fullWidth
+            style={{ marginBottom: 15 }}
+            {...username}
           />
           <TextField
             label='Comment'
             fullWidth
             multiline
             rows={4}
+            style={{ marginBottom: 15 }}
+            {...comment}
           />
-          <Button>Comment</Button>
+          <Button
+            onClick={addComment}
+            color='primary'
+            variant="contained"
+            style={{ marginBottom: 15 }}
+          >Comment</Button>
         </Grid>
         <div>
           {song.comments.map(comment =>
             <div>
-              <div>{comment.username}</div>
-              <div>{comment.text}</div>
+              <h4>{comment.username}</h4>
+              <p>{comment.text}</p>
             </div>,
           )}
         </div>
@@ -63,3 +79,12 @@ const SongPage = () => {
 ;
 
 export default SongPage;
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const response = await axios.get('http://localhost:5000/tracks/' + params.id);
+  return {
+    props: {
+      serverTrack: response.data,
+    },
+  };
+};

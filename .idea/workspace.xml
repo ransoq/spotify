@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bec8fecb-3682-48a0-a508-f5ebce146e5c" name="Default Changelist" comment="add server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Player.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/SongItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/SongItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/SongProgress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/SongProgress.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/layouts/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/layouts/MainLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/songs/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/songs/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/songs/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/songs/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/songs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/songs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store/reducers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store/reducers/playerReducer.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/types/songs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/songs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +73,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/server/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.JavaScript" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -102,7 +111,15 @@
       <workItem from="1625234225253" duration="221000" />
       <workItem from="1625234462949" duration="5235000" />
       <workItem from="1625573905685" duration="3736000" />
-      <workItem from="1625652852372" duration="10329000" />
+      <workItem from="1625652852372" duration="10392000" />
+      <workItem from="1625725689140" duration="5966000" />
+      <workItem from="1625744116629" duration="1850000" />
+      <workItem from="1625746903847" duration="1651000" />
+      <workItem from="1625750622788" duration="4465000" />
+      <workItem from="1625814418991" duration="7105000" />
+      <workItem from="1625824109378" duration="11412000" />
+      <workItem from="1626078059070" duration="6390000" />
+      <workItem from="1626090368170" duration="8343000" />
     </task>
     <task id="LOCAL-00001" summary="add server">
       <created>1625061291767</created>

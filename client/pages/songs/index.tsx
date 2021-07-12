@@ -1,56 +1,59 @@
-import { FC } from 'react';
-import { Button, Card, Grid, Box } from '@material-ui/core';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
+import { Button, Card, Grid, Box, TextField } from '@material-ui/core';
 
 import SongList from '../../components/SongList';
 import MainLayout from '../../layouts/MainLayout';
-import { ISong } from '../../types/songs';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { wrapper, NextThunkDispatch } from '../../store';
+import { fetchSongs, searchTracks } from '../../store/actions-creators/song';
+import { useDispatch } from 'react-redux';
 
-const Songs: FC = () => {
+const Index: FC = () => {
   const router = useRouter();
-  const songs: ISong[] = [
-    {
-      _id: '1',
-      name: 'Song 1',
-      artist: 'Singer 1',
-      text: 'Some text',
-      listens: 5,
-      audio: 'http://localhost:5000/audio/8023fca1-ce6e-49bd-a3db-4544dc3dab79.mp3',
-      picture: 'http://localhost:5000/image/a398fec9-d62f-442f-b8a7-276b17bb1840.jpg',
-      comments: [],
-    },
-    {
-      _id: '2',
-      name: 'Song 2',
-      artist: 'Singer 2',
-      text: 'Some text',
-      listens: 5,
-      audio: 'http://localhost:5000/audio/8023fca1-ce6e-49bd-a3db-4544dc3dab79.mp3',
-      picture: 'http://localhost:5000/image/a398fec9-d62f-442f-b8a7-276b17bb1840.jpg',
-      comments: [],
-    },
-    {
-      _id: '3',
-      name: 'Song 3',
-      artist: 'Singer 3',
-      text: 'Some text',
-      listens: 5,
-      audio: 'http://localhost:5000/audio/8023fca1-ce6e-49bd-a3db-4544dc3dab79.mp3',
-      picture: 'http://localhost:5000/image/a398fec9-d62f-442f-b8a7-276b17bb1840.jpg',
-      comments: [],
-    },
-  ];
+  const { songs, error } = useTypedSelector(state => state.song);
+  const [query, setQuery] = useState('');
+  const [timer, setTimer] = useState(null);
+  const dispatch = useDispatch() as NextThunkDispatch;
+
+  const search = async (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    if (timer) {
+      clearTimeout(timer);
+    }
+    setTimer(
+      setTimeout(async () => {
+        await dispatch(await searchTracks(event.target.value));
+      }, 500),
+    );
+  };
+
+  if (error) {
+    return (
+      <MainLayout>
+        <h1>{error}</h1>
+      </MainLayout>
+    );
+  }
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
 
   return (
     <MainLayout>
       <Grid container justifyContent='center'>
         <Card style={{ width: 1080 }}>
           <Box p={10}>
-            < Grid container justifyContent='space-between'>
+            <Grid container justifyContent='space-between'>
               <h1>Songs list</h1>
               <Button onClick={() => router.push('/songs/create')}>Upload</Button>
             </Grid>
           </Box>
+          <TextField
+            value={query}
+            onChange={search}
+          />
           <SongList tracks={songs} />
         </Card>
       </Grid>
@@ -58,4 +61,10 @@ const Songs: FC = () => {
   );
 };
 
-export default Songs;
+export default Index;
+
+// @ts-ignore
+export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
+  const dispatch = store.dispatch as NextThunkDispatch;
+  await dispatch(await fetchSongs());
+});
